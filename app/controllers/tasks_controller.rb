@@ -7,14 +7,14 @@ class TasksController < ApplicationController
     authorize Task
     @tasks = Task.all
 
-    respond_to do |format|
-      format.html do
-        render :index
-      end
-      format.json do
-        render json: {tasks: @tasks.to_json}
-      end
-    end
+    # respond_to do |format|
+    #   format.html do
+    #     render :index
+    #   end
+    #   format.json do
+    #     render json: {tasks: @tasks.to_json}
+    #   end
+    # end
   end
 
   def show
@@ -24,7 +24,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
-    authorize task
+    authorize @task
   end
 
   def create
@@ -41,7 +41,7 @@ class TasksController < ApplicationController
   def edit; end
 
   def update
-    if @task.update_task.task
+    if update_task.task
       redirect_to @task, notice: 'Task was successfully updated.'
     else
       render :edit

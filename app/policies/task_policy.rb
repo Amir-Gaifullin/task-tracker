@@ -2,7 +2,7 @@ class TaskPolicy < ApplicationPolicy
   alias_method :task, :record
 
   def index?
-    true
+    user.present?
   end
 
   def create?
