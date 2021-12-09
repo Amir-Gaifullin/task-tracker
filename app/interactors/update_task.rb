@@ -3,5 +3,5 @@ class UpdateTask
 
   organize UpdateTask::PrepareParams,
            UpdateTask::SaveRecord
-           # UpdateTask::SendNotifications
+  # UpdateTask::SendNotifications
 end

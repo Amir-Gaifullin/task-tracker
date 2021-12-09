@@ -4,7 +4,6 @@ module Mutations
     argument :task_id, ID, required: true
     argument :content, String, required: true
 
-
     type Types::CommentType
 
     def resolve(**options)
@@ -14,11 +13,7 @@ module Mutations
         current_user: current_user,
         comment: comment
       )
-      if result.success?
-        result.comment
-      else
-        nil
-      end
+      result.comment if result.success?
     end
   end
 end

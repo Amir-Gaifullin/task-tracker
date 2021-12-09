@@ -9,15 +9,11 @@ module Mutations
 
     def resolve(**options)
       result = ::CreateTask.call(
-        task_params: options ,
+        task_params: options,
         current_user: current_user
       )
 
-      if result.success?
-        result.task
-      else
-        nil
-      end
+      result.task if result.success?
     end
   end
 end

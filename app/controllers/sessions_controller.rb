@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       redirect_to projects_path, notice: "You've successfully logged in!"
     else
       @user = User.new
-      @user.errors.add :base, "Wrong email or password"
+      @user.errors.add :base, 'Wrong email or password'
       render :new
     end
   end

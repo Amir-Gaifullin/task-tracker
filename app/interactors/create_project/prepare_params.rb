@@ -13,7 +13,7 @@ class CreateProject
     def prepared_project_params
       project_params[:user_ids] ||= []
       project_params.merge(
-          user_ids: user_ids
+        user_ids: user_ids
       )
     end
 

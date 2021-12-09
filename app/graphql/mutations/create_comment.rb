@@ -11,11 +11,7 @@ module Mutations
         current_user: current_user
       )
 
-      if result.success?
-        result.comment
-      else
-        nil
-      end
+      result.comment if result.success?
     end
   end
 end

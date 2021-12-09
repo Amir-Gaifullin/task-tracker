@@ -11,7 +11,7 @@ module Authentication
   def authenticate_current_user!
     return if session[:current_user_id] && current_user.present?
 
-    raise UserNotAuthenticated, "No currrent_user_id in session"
+    raise UserNotAuthenticated, 'No currrent_user_id in session'
   end
 
   def current_user
@@ -21,6 +21,6 @@ module Authentication
   private
 
   def not_authenticated!
-    redirect_to new_session_path, alert: "You must log in first!"
+    redirect_to new_session_path, alert: 'You must log in first!'
   end
 end

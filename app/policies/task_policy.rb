@@ -1,5 +1,5 @@
 class TaskPolicy < ApplicationPolicy
-  alias_method :task, :record
+  alias task record
 
   def index?
     user.present?
@@ -20,7 +20,6 @@ class TaskPolicy < ApplicationPolicy
   def show?
     user.present?
   end
-
 
   class Scope < Scope
     def resolve

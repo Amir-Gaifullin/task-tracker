@@ -12,11 +12,7 @@ module Mutations
         current_user: current_user
       )
 
-      if result.success?
-        result.project
-      else
-        nil
-      end
+      result.project if result.success?
     end
   end
 end

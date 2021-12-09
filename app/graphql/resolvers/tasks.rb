@@ -2,7 +2,7 @@ module Resolvers
   class Tasks < Resolvers::Base
     type [Types::TaskType], null: false
 
-    def resolve(**params)
+    def resolve(**_params)
       ::Task.all
     end
   end

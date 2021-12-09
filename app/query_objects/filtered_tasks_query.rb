@@ -1,16 +1,16 @@
 class FilteredTasksQuery < BaseFilteredQuery
-  ALLOWED_PARAMS = [:status, :title, :description, :project_id, :user_id ]
+  ALLOWED_PARAMS = %i[status title description project_id user_id]
 
   def by_status(relation, status)
     relation.where(status: status)
   end
 
   def by_title(relation, title)
-    relation.where("title LIKE ?", title)
+    relation.where('title LIKE ?', title)
   end
 
   def by_description(relation, description)
-    relation.where("description LIKE ?", description)
+    relation.where('description LIKE ?', description)
   end
 
   def by_project_id(relation, project_id)

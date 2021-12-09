@@ -1,5 +1,5 @@
 class Activity < ApplicationRecord
-  ALLOWED_KINDS = ["project_created", "project_update"]
+  ALLOWED_KINDS = %w[project_created project_update]
 
   belongs_to :user
   belongs_to :target, polymorphic: true

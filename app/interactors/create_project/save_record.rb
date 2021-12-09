@@ -6,7 +6,7 @@ class CreateProject
 
     def call
       context.project = project
-      context.fail!(error: "Invalid data") unless project.save 
+      context.fail!(error: 'Invalid data') unless project.save
     end
 
     private

@@ -6,7 +6,7 @@ class CreateComment
 
     def call
       context.comment = comment
-      context.fail!(error: "Invalid data") unless comment.save 
+      context.fail!(error: 'Invalid data') unless comment.save
     end
 
     private

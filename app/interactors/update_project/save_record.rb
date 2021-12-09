@@ -6,9 +6,7 @@ class UpdateProject
 
     def call
       context.project = project
-      unless project.update(prepared_project_params)
-        context.fail!(error: "Invalid data")
-      end
+      context.fail!(error: 'Invalid data') unless project.update(prepared_project_params)
     end
 
     private

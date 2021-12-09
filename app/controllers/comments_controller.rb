@@ -26,7 +26,6 @@ class CommentsController < ApplicationController
   end
 
   def update
-
     if update_comment.success?
       redirect_to @comment.task, notice: 'Comment was successfully updated.'
     else
@@ -48,20 +47,20 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:content, :task_id).merge(
-        {
-          user_id: current_user.id,
-          task_id: params[:task_id]
-        }
-      )
+      {
+        user_id: current_user.id,
+        task_id: params[:task_id]
+      }
+    )
   end
 
   def create_comment
     @create_comment ||= CreateComment.call(comment_params: comment_params,
-                                    current_user: current_user)
+                                           current_user: current_user)
   end
 
   def update_comment
     @update_comment ||= UpdateComment.call(comment_params: comment_params, comment: @comment,
-                                    current_user: current_user)
+                                           current_user: current_user)
   end
 end

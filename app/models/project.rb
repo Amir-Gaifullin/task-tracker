@@ -6,5 +6,5 @@ class Project < ApplicationRecord
 
   validates :name, presence: true
 
-  scope :old, -> { where("created_at < ?", 1.day.ago) }
+  scope :old, -> { where('created_at < ?', 1.day.ago) }
 end

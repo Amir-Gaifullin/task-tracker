@@ -13,14 +13,13 @@ class ProjectsController < ApplicationController
         render :index
       end
       format.json do
-        render json: {projects: @projects.to_json}
+        render json: { projects: @projects.to_json }
       end
     end
   end
 
   # GET /projects/1
-  def show
-  end
+  def show; end
 
   # GET /projects/new
   def new
@@ -29,8 +28,7 @@ class ProjectsController < ApplicationController
   end
 
   # GET /projects/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /projects
   def create
@@ -67,10 +65,10 @@ class ProjectsController < ApplicationController
   end
 
   def update_project
-  #   @update_project ||= 
-  #     UpdateProject.call(project_params: project_params, current_user: current_user)
+    #   @update_project ||=
+    #     UpdateProject.call(project_params: project_params, current_user: current_user)
     @update_project ||=
-    UpdateProject.call(project_params: project_params, current_user: current_user, project_id: @project.id)
+      UpdateProject.call(project_params: project_params, current_user: current_user, project_id: @project.id)
   end
 
   def set_project

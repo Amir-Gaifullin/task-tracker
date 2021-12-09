@@ -1,5 +1,5 @@
 class ProjectPolicy < ApplicationPolicy
-  alias_method :project, :record
+  alias project record
 
   def index?
     true

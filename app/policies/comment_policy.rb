@@ -1,5 +1,5 @@
 class CommentPolicy < ApplicationPolicy
-  alias_method :comment, :record
+  alias comment record
 
   def create?
     true

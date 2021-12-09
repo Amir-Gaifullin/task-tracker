@@ -66,7 +66,6 @@ class TasksController < ApplicationController
       UpdateTask.call(task_params: task_params, current_user: current_user, task_id: @task.id)
   end
 
-
   def set_task
     @task = Task.find_by!(id: params[:id])
   end

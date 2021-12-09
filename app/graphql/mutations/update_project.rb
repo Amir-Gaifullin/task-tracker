@@ -14,11 +14,7 @@ module Mutations
         project_id: options[:project_id]
       )
 
-      if result.success?
-        result.project
-      else
-        nil
-      end
+      result.project if result.success?
     end
   end
 end

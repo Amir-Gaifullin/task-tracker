@@ -18,7 +18,7 @@ class BaseFilteredQuery
     params
       .to_h
       .deep_symbolize_keys
-      .reject { |k,v| !self.class::ALLOWED_PARAMS.include?(k) || v.to_s.blank? }
+      .reject { |k, v| !self.class::ALLOWED_PARAMS.include?(k) || v.to_s.blank? }
   end
 
   attr_reader :relation, :options

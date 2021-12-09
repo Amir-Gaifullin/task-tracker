@@ -15,11 +15,7 @@ module Mutations
         task_id: options[:task_id]
       )
 
-      if result.success?
-        result.task
-      else
-        nil
-      end
+      result.task if result.success?
     end
   end
 end

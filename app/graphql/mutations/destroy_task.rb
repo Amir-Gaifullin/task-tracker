@@ -7,11 +7,7 @@ module Mutations
     def resolve(**options)
       result = Task.find_by(id: options[:task_id])
 
-      if result
-        result.destroy
-      else
-        nil
-      end
+      result.destroy if result
     end
   end
 end

@@ -7,11 +7,7 @@ module Mutations
     def resolve(**options)
       result = Comment.find_by(id: options[:comment_id])
 
-      if result
-        result.destroy
-      else
-        nil
-      end
+      result.destroy if result
     end
   end
 end

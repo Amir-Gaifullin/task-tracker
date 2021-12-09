@@ -12,7 +12,7 @@ class UpdateTask
     private
 
     def create_activity
-      RegisterActivityJob.perform_later(current_user.id, "task_created", task.id, "Task")
+      RegisterActivityJob.perform_later(current_user.id, 'task_created', task.id, 'Task')
     end
 
     def send_email_notifications
