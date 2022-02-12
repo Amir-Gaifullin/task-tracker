@@ -7,15 +7,6 @@ class ProjectsController < ApplicationController
   def index
     authorize Project
     @projects = Project.all
-
-    respond_to do |format|
-      format.html do
-        render :index
-      end
-      format.json do
-        render json: { projects: @projects.to_json }
-      end
-    end
   end
 
   # GET /projects/1
@@ -65,8 +56,6 @@ class ProjectsController < ApplicationController
   end
 
   def update_project
-    #   @update_project ||=
-    #     UpdateProject.call(project_params: project_params, current_user: current_user)
     @update_project ||=
       UpdateProject.call(project_params: project_params, current_user: current_user, project_id: @project.id)
   end
@@ -76,6 +65,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :description, user_ids: [])
+    params.require(:project).permit(:name, :description, user_ids: []).merge(user_id: current_user.id)
   end
 end
