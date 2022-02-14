@@ -1,5 +1,5 @@
 class FilteredTasksQuery < BaseFilteredQuery
-  ALLOWED_PARAMS = %i[status title description project_id user_id]
+  ALLOWED_PARAMS = %i[status title description project_id user_id].freeze
 
   def by_status(relation, status)
     relation.where(status: status)

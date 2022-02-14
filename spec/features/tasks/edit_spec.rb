@@ -5,7 +5,7 @@ RSpec.describe 'Edit a task', type: :feature do
 
   let(:task) { create(:task, title: 'A test task!!!!!!!!!', user_id: current_user.id) }
 
-  scenario 'user edit a task' do
+  it 'user edit a task' do
     visit tasks_path(task)
     click_on 'Edit'
     fill_in 'Description', with: 'Another description'
@@ -17,8 +17,8 @@ RSpec.describe 'Edit a task', type: :feature do
 
   context 'when user is not author of the task' do
     let(:task) { create(:task, title: 'A test task!!!!!!!!!', user_id: current_user.id + 1) }
-    
-    scenario 'user tries to edit the task' do
+
+    it 'user tries to edit the task' do
       visit tasks_path(task)
       click_on 'Edit'
       expect(page).to have_current_path(projects_path)

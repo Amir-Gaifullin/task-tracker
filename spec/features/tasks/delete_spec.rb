@@ -5,7 +5,7 @@ RSpec.describe 'Delete a task', type: :feature do
 
   let(:task) { create(:task, title: 'A test task!!!!!!!!!', user_id: current_user.id) }
 
-  scenario 'user try to delete a task' do
+  it 'user try to delete a task' do
     visit tasks_path(task)
 
     click_on 'Destroy'
@@ -15,7 +15,8 @@ RSpec.describe 'Delete a task', type: :feature do
 
   context 'when user is not author of the task' do
     let(:task) { create(:task, title: 'A test task!!!!!!!!!', user_id: current_user.id + 1) }
-    scenario 'not allowed user try to destroy the task' do
+
+    it 'not allowed user try to destroy the task' do
       visit tasks_path(task)
 
       click_on 'Destroy'

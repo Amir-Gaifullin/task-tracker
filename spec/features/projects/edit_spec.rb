@@ -5,7 +5,7 @@ RSpec.describe 'Edit a project', type: :feature do
 
   let(:project) { create(:project, user: current_user) }
 
-  scenario 'user edit a project' do
+  it 'user edit a project' do
     visit edit_project_path(project)
 
     fill_in 'Name', with: 'A new name for the project'
@@ -20,7 +20,7 @@ RSpec.describe 'Edit a project', type: :feature do
   context 'when user is not author of the project' do
     let(:project) { create(:project) }
 
-    scenario 'user tries to edit the project' do
+    it 'user tries to edit the project' do
       visit edit_project_path(project)
 
       expect(page).to have_current_path(projects_path)

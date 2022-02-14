@@ -5,7 +5,7 @@ RSpec.describe 'View a project', type: :feature do
 
   let(:project) { create(:project, name: 'A test project') }
 
-  scenario 'User views a project' do
+  it 'User views a project' do
     visit project_url(project)
 
     expect(page).to have_content('A test project')

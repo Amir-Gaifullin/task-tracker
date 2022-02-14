@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TasksController < ApplicationController
   before_action :authenticate_current_user!, except: %i[index]
   before_action :set_task, only: %i[show edit update destroy]
@@ -67,7 +69,7 @@ class TasksController < ApplicationController
   end
 
   def set_task
-    @task = Task.find_by!(id: params[:id])
+    @task = Task.find(params[:id])
   end
 
   def task_params
