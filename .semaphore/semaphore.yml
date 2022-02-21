@@ -38,4 +38,4 @@ blocks:
       jobs:
         - name: Check spec tests
           commands:
-            - bin/spec
+            - rspec spec
