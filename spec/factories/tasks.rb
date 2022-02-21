@@ -4,6 +4,6 @@ FactoryBot.define do
     project
     sequence(:title) { |n| "Task ##{n}" }
     description { Faker::Lorem.paragraph }
-    deadline_at { 1.day.from_now }
+    deadline_at {1.days.from_now}
   end
 end

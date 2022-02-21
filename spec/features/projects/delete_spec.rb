@@ -1,17 +1,20 @@
 require 'rails_helper'
 
-describe 'Delete project' do
-  include_context 'when current user signed in'
+RSpec.describe 'Delete project', type: :feature do
+  include_context 'when user signed in'
 
-  let(:project) { create(:project, name: 'New Project') }
+  let(:project) do
+    create(:project, name: 'Example',
+                     user: current_user)
+  end
 
-  before { visit project_path(project) }
+  it 'User delete project' do
+    visit projects_path(project)
 
-  it 'User deletes project' do
-    click_on 'Delete'
+    click_on 'Destroy'
 
-    expect(page).to have_content('Project was successfully destroyed.')
-    expect(page).not_to have_content('New Project')
-    expect(project.reload).to be_deleted
+    expect(page).to have_no_current_path(projects_path(project))
+    save_and_open_page
+    expect(page).to have_no_content('Example')
   end
 end
