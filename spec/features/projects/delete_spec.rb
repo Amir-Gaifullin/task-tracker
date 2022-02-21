@@ -14,7 +14,6 @@ RSpec.describe 'Delete project', type: :feature do
     click_on 'Destroy'
 
     expect(page).to have_no_current_path(projects_path(project))
-    save_and_open_page
     expect(page).to have_no_content('Example')
   end
 end
