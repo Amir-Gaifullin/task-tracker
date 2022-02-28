@@ -23,6 +23,7 @@ RSpec.describe 'TaskPolicy', type: :policy do
 
   describe '#create?' do
     subject { policy.create? }
+
     let(:creator) { User.new(id: 43) }
     let(:project) { Project.new(id: 42, user: creator) }
     let(:task) { Task.new(project: project) }
