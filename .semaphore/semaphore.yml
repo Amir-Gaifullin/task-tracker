@@ -32,10 +32,16 @@ blocks:
         - name: Check code quality
           commands:
             - bin/rubocop
-  - name: Spec
-    dependencies: []
-    task:
-      jobs:
-        - name: Check spec tests
-          commands:
-            - rspec spec
+  # - name: Spec
+  #   dependencies: []
+  #   task:
+  #     jobs:
+  #       - name: Check spec tests
+  #         commands:
+  #           - rspec spec
+
+promotions:
+  - name: Deploy to Heroku
+    pipeline_file: heroku.yml
+    auto_promote:
+      when: "result = 'passed' and branch = 'master'"

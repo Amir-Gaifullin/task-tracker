@@ -3,16 +3,16 @@ name: Deploy to Heroku
 agent:
   machine:
     type: e1-standard-2
-    os_image: ubuntu2104
+    os_image: ubuntu1804
 
 blocks:
   - name: Deploy
     task:
       secrets:
-        - name: task-tracker-heroku
+        - name: demoapp-heroku
       env_vars:
         - name: HEROKU_REMOTE
-          value: https://git.heroku.com/obscure-hamlet-65327.git
+          value: https://git.heroku.com/afternoon-citadel-71325.git
       jobs:
         - name: Deploy to Heroku
           commands:
