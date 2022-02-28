@@ -38,7 +38,7 @@ blocks:
       jobs:
         - name: Check spec tests
           commands:
-            - rspec
+            - rspec spec
 
 promotions:
   - name: Deploy to Heroku
