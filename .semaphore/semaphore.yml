@@ -3,7 +3,7 @@ name: Task Tracker
 agent:
   machine:
     type: e1-standard-2
-    os_image: ubuntu1804
+    os_image: ubuntu2104
 
 global_job_config:
   env_vars:
