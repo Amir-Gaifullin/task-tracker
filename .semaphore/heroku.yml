@@ -12,7 +12,7 @@ blocks:
         - name: demoapp-heroku
       env_vars:
         - name: HEROKU_REMOTE
-          value: https://git.heroku.com/blooming-scrubland-15784.git
+          value: https://git.heroku.com/afternoon-citadel-71325.git
       jobs:
         - name: Deploy to Heroku
           commands:
