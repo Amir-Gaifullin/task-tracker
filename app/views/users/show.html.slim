@@ -8,3 +8,5 @@ p
   strong Email:
   br
   = current_user.email
+
+= link_to 'Update user profile', edit_user_path(@current_user)

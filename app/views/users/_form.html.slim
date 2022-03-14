@@ -2,4 +2,6 @@
   = form.input :full_name
   = form.input :email
   = form.input :password
+  - if @new_user
+    = form.input :new_password
   = form.submit "Sign up", class: "btn btn-primary"
