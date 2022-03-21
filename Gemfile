@@ -10,6 +10,7 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
+gem "seedbank"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
