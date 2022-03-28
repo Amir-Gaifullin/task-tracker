@@ -33,7 +33,7 @@ blocks:
           commands:
             - bin/rubocop
   # - name: Spec
-  #   dependencies: []
+  #   dependencies: ["Quality"]
   #   task:
   #     jobs:
   #       - name: Check spec tests
