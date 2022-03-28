@@ -52,7 +52,7 @@ RSpec.describe 'ProjectPolicy', type: :policy do
     let(:user) { User.new(id: 42) }
 
     context 'when user is not creator of the project' do
-      it { is_expected.to eq(true) }
+      it { is_expected.to eq(false) }
     end
 
     context 'when user is creator of the project' do
