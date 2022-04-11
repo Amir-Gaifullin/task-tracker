@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ProjectsController < ApplicationController
   before_action :authenticate_current_user!, except: %i[index]
   before_action :set_project, only: %i[show edit update destroy]

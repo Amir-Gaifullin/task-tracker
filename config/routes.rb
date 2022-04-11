@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
 
   get '/users', to: 'users#show'
+  get '/', to: 'projects#index'
   resources :users, only: %i[show new create edit update]
 
   resource :session, only: %i[new create destroy]
