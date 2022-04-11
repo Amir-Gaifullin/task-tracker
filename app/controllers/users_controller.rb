@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   skip_after_action :verify_authorized, only: %i[new create show edit update]
-  before_action :set_user, only: %i[show destroy edit update]
+  before_action :set_user, only: %i[show edit update]
 
   def show; end
 
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(users_params)
-      redirect_to user_path(@user), notice: "Profile has been updated"
+      redirect_to user_path(@user), notice: 'Profile has been updated'
     else
       render :edit
     end
