@@ -18,7 +18,7 @@ global_job_config:
       - bundle install
 
 blocks:
-  - name: Setup/Quality
+  - name: Quality
     dependencies: ["Setup"]
     task:
       jobs:
