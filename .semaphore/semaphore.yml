@@ -18,8 +18,8 @@ global_job_config:
       - bundle install
 
 blocks:
-  - name: Quality
-    dependencies: ["Setup"]
+  - name: Setup/Quality
+    dependencies: []
     task:
       jobs:
         - name: Check code quality
