@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class UsersController < ApplicationController
   skip_after_action :verify_authorized, only: %i[new create show edit update]
   before_action :set_user, only: %i[show edit update]
