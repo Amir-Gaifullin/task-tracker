@@ -1,10 +1,10 @@
 class UserDecorator < ApplicationDecorator
   delegate :full_name
 
-# dont kill me for this
+  # dont kill me for this
 
   def full_name_lst
-    "#{full_name}".split(" ")
+    full_name.to_s.split
   end
 
   def first_name
