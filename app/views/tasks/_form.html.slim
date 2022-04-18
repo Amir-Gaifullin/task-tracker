@@ -4,6 +4,7 @@
   = form.select :project_id, Project.all.pluck(:name, :id)
   = form.input :title
   = form.input :description
+  = form.select :status, collection: Task::ALLOWED_STATUSES
   = form.input :deadline_at
   br
   = form.submit 'Save'

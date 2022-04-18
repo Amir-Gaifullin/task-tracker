@@ -10,6 +10,10 @@ p
   = @task.description
 
 p
+  strong Status:
+  = @task.status
+
+p
   strong Project:
   = link_to @task.project.name, @task.project
 
