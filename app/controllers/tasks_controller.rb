@@ -5,16 +5,7 @@ class TasksController < ApplicationController
 
   def index
     authorize Task
-    @tasks = Task.all
-
-    # respond_to do |format|
-    #   format.html do
-    #     render :index
-    #   end
-    #   format.json do
-    #     render json: {tasks: @tasks.to_json}
-    #   end
-    # end
+    @pagy, @tasks = pagy(Task.all.order(title: :asc))
   end
 
   def show

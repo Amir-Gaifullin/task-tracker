@@ -2,7 +2,7 @@ p id="notice"
   = notice
 
 h1 Projects
-
+= link_to 'New Project', new_project_path, class: "btn btn-primary"
 table
   thead
     tr
@@ -18,4 +18,4 @@ table
         td = link_to 'Edit', edit_project_path(project)
         td = link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }
 br
-= link_to 'New Project', new_project_path, class: "btn btn-primary"
+= pagy_bootstrap_nav(@pagy).html_safe

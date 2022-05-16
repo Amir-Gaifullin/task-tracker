@@ -1,11 +1,10 @@
 h1 Tasks
-
+= link_to 'New Task', new_task_path, class: "btn btn-primary"
 table
   thead
     tr
-      td ID
-      td Project ID
       td Title
+      td Project
       td Description
       td Requested at
       td Deadline
@@ -14,9 +13,8 @@ table
   tbody
    - @tasks.each do |task|
     tr
-      td = task.id
-      td = task.project_id
       td = task.title
+      td = task.project.name
       td = task.description
       td = task.created_at
       td = task.deadline_at
@@ -26,4 +24,4 @@ table
       td = link_to('Destroy', task, method: :delete, data: { confirm: 'Are you sure?' })
 
 br
-= link_to 'New Task', new_task_path, class: "btn btn-primary"
+= pagy_bootstrap_nav(@pagy).html_safe
