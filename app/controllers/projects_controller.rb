@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   def index
     authorize Project
-    @projects = Project.all
+    @pagy, @projects = pagy(Project.all.order(name: :asc))
   end
 
   # GET /projects/1
