@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  ALLOWED_STATUSES = %w[not_started started finished].freeze
+  ALLOWED_STATUSES = %w[not_started started finished draft].freeze
 
   belongs_to :project
 
