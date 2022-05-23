@@ -1,6 +1,5 @@
 class UpdateComment
   include Interactor::Organizer
 
-  organize UpdateComment::SaveRecord,
-
+  organize UpdateComment::SaveRecord
 end
