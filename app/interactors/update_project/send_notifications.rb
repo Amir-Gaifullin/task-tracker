@@ -23,7 +23,7 @@ class UpdateProject
     end
 
     def send_email_notification(_project, _user)
-      ProjectMailer.project_created(Project.last, User.last).deliver_later
+      ProjectMailer.project_update(Project.last, User.last).deliver_later
     end
   end
 end

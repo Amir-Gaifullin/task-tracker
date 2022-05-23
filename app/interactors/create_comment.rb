@@ -1,6 +1,6 @@
 class CreateComment
   include Interactor::Organizer
 
-  organize CreateComment::SaveRecord
-  # CreateComment::SendNotifications
+  organize CreateComment::SaveRecord,
+
 end
