@@ -5,7 +5,7 @@ class CreateTask
     delegate :task, :current_user, to: :context
 
     def call
-      send_email_notifications
+      send_email_notification
       create_activity
     end
 
@@ -15,8 +15,8 @@ class CreateTask
       RegisterActivityJob.perform_later(current_user.id, 'task_created', task.id, 'Task')
     end
 
-    def send_email_notifications
-      send_email_notification(task, current_user)
+    def send_email_notification(_task, _user)
+      TaskMailer.task_created(Task.last, User.last).deliver_later
     end
   end
 end
