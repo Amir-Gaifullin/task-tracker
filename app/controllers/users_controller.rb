@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   skip_after_action :verify_authorized, only: %i[new create show edit update]
-  before_action :set_user, only: %i[show edit update]
+  before_action :set_user, only: %i[edit update]
+  before_action :set_user_decorate, only: %i[show]
+
 
   def show; end
 
@@ -32,8 +34,12 @@ class UsersController < ApplicationController
 
   private
 
+  def set_user_decorate
+    @user_decorate = User.find(current_user.id).decorate
+  end
+
   def set_user
-    @user = User.find(current_user.id).decorate
+    @user = User.find(current_user.id)
   end
 
   def users_params
