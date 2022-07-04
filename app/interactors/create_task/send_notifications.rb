@@ -15,7 +15,7 @@ class CreateTask
       RegisterActivityJob.perform_later(current_user.id, 'task_created', task.id, 'Task')
     end
 
-    def send_email_notification(_task, _user)
+    def send_email_notification
       TaskMailer.task_created(Task.last, User.last).deliver_later
     end
   end

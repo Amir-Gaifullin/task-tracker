@@ -11,13 +11,13 @@ RSpec.describe 'TaskPolicy', type: :policy do
     context 'when user is authenticated' do
       let(:user) { User.new }
 
-      it { is_expected.to eq(true) }
+      it { is_expected.to be(true) }
     end
 
     context 'when user is not authenticated' do
       let(:user) { nil }
 
-      it { is_expected.to eq(false) }
+      it { is_expected.to be(false) }
     end
   end
 
@@ -31,7 +31,7 @@ RSpec.describe 'TaskPolicy', type: :policy do
     context 'when user is creator of the project' do
       let(:user) { creator }
 
-      it { is_expected.to eq(true) }
+      it { is_expected.to be(true) }
     end
 
     context 'when user is not creator of the project' do
