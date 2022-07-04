@@ -22,7 +22,7 @@ class UpdateProject
       end
     end
 
-    def send_email_notification
+    def send_email_notification(_task, _user)
       ProjectMailer.project_created(Project.last, User.last).deliver_later
     end
   end
