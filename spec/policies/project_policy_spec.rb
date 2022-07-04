@@ -13,13 +13,13 @@ RSpec.describe 'ProjectPolicy', type: :policy do
     context 'when user is not authenticated' do
       let(:user) { nil }
 
-      it { is_expected.to eq(true) }
+      it { is_expected.to be(true) }
     end
 
     context 'when user is authenticated' do
       let(:user) { User.new }
 
-      it { is_expected.to eq(true) }
+      it { is_expected.to be(true) }
     end
   end
 
@@ -29,13 +29,13 @@ RSpec.describe 'ProjectPolicy', type: :policy do
     context 'when user is not authenticated' do
       let(:user) { nil }
 
-      it { is_expected.to eq(false) }
+      it { is_expected.to be(false) }
     end
 
     context 'when user is authenticated' do
       let(:user) { User.new }
 
-      it { is_expected.to eq(true) }
+      it { is_expected.to be(true) }
     end
   end
 
@@ -52,13 +52,13 @@ RSpec.describe 'ProjectPolicy', type: :policy do
     let(:user) { User.new(id: 42) }
 
     context 'when user is not creator of the project' do
-      it { is_expected.to eq(false) }
+      it { is_expected.to be(false) }
     end
 
     context 'when user is creator of the project' do
       let(:project) { Project.new(user: user) }
 
-      it { is_expected.to eq(true) }
+      it { is_expected.to be(true) }
     end
   end
 
