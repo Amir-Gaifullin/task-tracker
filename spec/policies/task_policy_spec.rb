@@ -9,7 +9,7 @@ RSpec.describe 'TaskPolicy', type: :policy do
     let(:task) { Task }
 
     context 'when user is authenticated' do
-      let(:user) { User.new }
+      let(:user) { create :user }
 
       it { is_expected.to be(true) }
     end
@@ -24,20 +24,21 @@ RSpec.describe 'TaskPolicy', type: :policy do
   describe '#create?' do
     subject { policy.create? }
 
-    let(:creator) { User.new(id: 43) }
-    let(:project) { Project.new(id: 42, user: user) }
-    let(:task) { Task.new(project: project) }
+    let(:project) { create :project, user_id: creator }
+    let(:task) { create :task, project: project, user_id: user }
 
     context 'when user is creator of the project' do
-      let(:user) { creator }
+      let(:user) { create :user }
+      let(:creator) { user }
 
       it { is_expected.to be(true) }
     end
 
     context 'when user is not creator of the project' do
-      let(:user) { User.new(id: 44) }
+      let(:user) { create :user }
+      let(:creator) { nil }
 
-      it { is_expected.to be(true) }
+      it { is_expected.to be(false) }
     end
   end
 end

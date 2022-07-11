@@ -17,7 +17,7 @@ RSpec.describe 'ProjectPolicy', type: :policy do
     end
 
     context 'when user is authenticated' do
-      let(:user) { User.new }
+      let(:user) { create :user }
 
       it { is_expected.to be(true) }
     end
@@ -33,7 +33,7 @@ RSpec.describe 'ProjectPolicy', type: :policy do
     end
 
     context 'when user is authenticated' do
-      let(:user) { User.new }
+      let(:user) { create :user }
 
       it { is_expected.to be(true) }
     end
@@ -49,7 +49,7 @@ RSpec.describe 'ProjectPolicy', type: :policy do
     end
 
     context 'when user is authenticated' do
-      let(:user) { User.new }
+      let(:user) { create :user }
 
       it { is_expected.to be(true) }
     end
@@ -58,7 +58,7 @@ RSpec.describe 'ProjectPolicy', type: :policy do
   describe '#update?' do
     subject { policy.update? }
 
-    let(:user) { User.new(id: 42) }
+    let(:user) { create :user }
 
     context 'when user is not creator of the project' do
       it { is_expected.to be(false) }
