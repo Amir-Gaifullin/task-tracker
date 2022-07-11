@@ -39,11 +39,20 @@ RSpec.describe 'ProjectPolicy', type: :policy do
     end
   end
 
-  describe '#new?'
-  describe '#create?'
+  describe '#create?' do
+    subject { policy.create? }
 
-  describe '#edit?' do
-    pending 'implement me'
+    context 'when user is not authenticated' do
+      let(:user) { nil }
+
+      it { is_expected.to be(false) }
+    end
+
+    context 'when user is authenticated' do
+      let(:user) { User.new }
+
+      it { is_expected.to be(true) }
+    end
   end
 
   describe '#update?' do
@@ -61,6 +70,4 @@ RSpec.describe 'ProjectPolicy', type: :policy do
       it { is_expected.to be(true) }
     end
   end
-
-  describe '#destroy?'
 end
