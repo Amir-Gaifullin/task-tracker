@@ -35,5 +35,5 @@
 yarn-debug.log*
 .yarn-integrity
 
-/coverage/*
+/coverage
 /spec/examples.txt
