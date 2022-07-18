@@ -25,6 +25,13 @@ blocks:
         - name: Check code quality
           commands:
             - bin/rubocop
+  - name: Tests
+    dependencies: []
+    task:
+      jobs:
+        - name: Run tests
+          commands:
+            - bin/rubocop
 
 promotions:
   - name: Deploy to Heroku
