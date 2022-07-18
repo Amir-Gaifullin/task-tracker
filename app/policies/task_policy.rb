@@ -6,7 +6,7 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present?
+    user.id == task.project.user_id 
   end
 
   def update?
