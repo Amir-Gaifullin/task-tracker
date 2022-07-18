@@ -18,27 +18,13 @@ global_job_config:
       - bundle install
 
 blocks:
-  - name: Setup
+  - name: Setup/Quality
     dependencies: []
-    task:
-      jobs:
-        - name: bundle
-          commands:
-            - cache store
-  - name: Quality
-    dependencies: [Setup]
     task:
       jobs:
         - name: Check code quality
           commands:
             - bin/rubocop
-  - name: Tests
-    dependencies: [Quality]
-    task:
-      jobs:
-        - name: Run tests
-          commands:
-            - rspec spec
 
 promotions:
   - name: Deploy to Heroku
