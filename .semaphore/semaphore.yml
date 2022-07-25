@@ -18,24 +18,20 @@ global_job_config:
     commands:
       - checkout
       - cache restore
-blocks:
-- name: Lint
-  task:
-    jobs:
-    - name: Run quality
-      commands:
-      - bundle install
-      - bundle exec rubocop
-      - cache store
-- name: Test
-  task:
-    jobs:
-    - name: Run tests
-      commands:
       - sem-service start postgres
       - sem-service start redis
       - sem-version ruby 3.0.2
-      - bundle install
+      - bundle config set --local deployment 'true'
+      - bundle config set --local without 'development staging production'
+      - bundle install --jobs 4
       - yarn install --pure-lockfile
+      - cache store
+blocks:
+- name: Tests and quality
+  task:
+    jobs:
+    - name: Run
+      commands:
       - bundle exec rails db:setup
       - bundle exec rspec
+      - bundle exec rubocop --parallel
