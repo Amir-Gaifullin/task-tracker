@@ -19,7 +19,6 @@ global_job_config:
       - checkout
       - cache restore
       - bundle config set --local deployment 'true'
-      - bundle config set --local without 'development staging production'
 blocks:
 - name: Lint
   task:
@@ -27,7 +26,7 @@ blocks:
     - name: Run quality
       commands:
       - bundle install
-      - bundle exec rubocop  --parallel
+      - bundle exec rubocop --parallel
       - cache store
 - name: Test
   task:
@@ -39,6 +38,5 @@ blocks:
       - sem-version ruby 3.0.2
       - bundle install --local
       - yarn install --pure-lockfile
-      - cache store
       - bundle exec rails db:setup
       - bundle exec rspec
