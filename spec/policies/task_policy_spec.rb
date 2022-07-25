@@ -29,7 +29,7 @@ RSpec.describe 'TaskPolicy', type: :policy do
     let(:user) { create :user }
 
     context 'when user is creator of the project' do
-      let(:creator) { user }
+      let(:user) { creator }
 
       it { is_expected.to be(true) }
     end
