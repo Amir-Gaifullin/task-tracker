@@ -21,7 +21,7 @@ global_job_config:
       - sem-service start postgres
       - sem-service start redis
       - sem-version ruby 3.0.2
-      - bundle install --jobs 4
+      - bundle install --path vendor/bundle
       - yarn install --pure-lockfile
       - cache store
 blocks:
@@ -30,6 +30,6 @@ blocks:
     jobs:
     - name: Run
       commands:
-      - bundle exec rails db:setup
+      - bundle exec rails db:create db:schema:load
       - bundle exec rspec
       - bundle exec rubocop --parallel
