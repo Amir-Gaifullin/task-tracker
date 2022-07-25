@@ -18,7 +18,6 @@ global_job_config:
     commands:
       - checkout
       - cache restore
-      - bundle config set --local deployment 'true'
 blocks:
 - name: Lint
   task:
