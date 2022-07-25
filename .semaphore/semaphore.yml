@@ -30,6 +30,6 @@ blocks:
     jobs:
     - name: Run
       commands:
-      - bundle exec rails db:create db:schema:load
-      - bundle exec rspec
-      - bundle exec rubocop --parallel
+      - bin/rails db:setup
+      - bin/rspec
+      - bin/rubocop --parallel
