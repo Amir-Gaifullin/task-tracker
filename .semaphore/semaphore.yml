@@ -25,7 +25,7 @@ blocks:
     - name: Run quality
       commands:
       - bundle install
-      - bundle exec rubocop --parallel
+      - bundle exec rubocop
       - cache store
 - name: Test
   task:
@@ -35,7 +35,7 @@ blocks:
       - sem-service start postgres
       - sem-service start redis
       - sem-version ruby 3.0.2
-      - bundle install --local
+      - bundle install
       - yarn install --pure-lockfile
       - bundle exec rails db:setup
       - bundle exec rspec
