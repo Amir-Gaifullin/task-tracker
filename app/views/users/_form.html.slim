@@ -2,4 +2,10 @@
   = form.input :full_name
   = form.input :email
   = form.input :password
+  - if user.avatar
+    = image_tag resource.avatar_url
+
+    = form.input :remove_avatar, as: :boolean
+  = form.hidden_field :avatar, value: user.cached_avatar_data
+  = form.input :avatar
   = form.submit "Sign up", class: "btn btn-primary"
