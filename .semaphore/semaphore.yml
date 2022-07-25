@@ -19,6 +19,7 @@ global_job_config:
     - checkout
     - cache restore
     - sem-service start postgres
+    - sem-service start redis
     - sem-version ruby 3.0.2
     - bundle install
     - yarn install --pure-lockfile
