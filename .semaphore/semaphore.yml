@@ -14,11 +14,21 @@ fail_fast:
   stop:
     when: true
 global_job_config:
+  env_vars:
+    - name: BUNDLE_ARGS
+      value: '--deployment --without development staging production --jobs 4'
   prologue:
     commands:
       - checkout
       - cache restore
 blocks:
+- name: Lint
+  task:
+    jobs:
+    - name: Run quality
+      commands:
+      - bundle install ${BUNDLE_ARGS}
+      - bundle exec rubocop  --parallel
 - name: Test
   task:
     jobs:
@@ -27,14 +37,8 @@ blocks:
       - sem-service start postgres
       - sem-service start redis
       - sem-version ruby 3.0.2
-      - bundle install --jobs 5
+      - bundle install ${BUNDLE_ARGS} --local
       - yarn install --pure-lockfile
       - cache store
       - bundle exec rails db:setup
       - bundle exec rspec
-- name: Lint
-  task:
-    jobs:
-    - name: Run quality
-      commands:
-      - bundle exec rubocop  --parallel
