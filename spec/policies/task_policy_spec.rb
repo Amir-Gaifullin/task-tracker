@@ -37,7 +37,7 @@ RSpec.describe 'TaskPolicy', type: :policy do
     context 'when user is not creator of the project' do
       let(:creator) { nil }
 
-      it { is_expected.to be(false) }
+      it { is_expected.to be_falsey }
     end
   end
 end
