@@ -1,3 +1,3 @@
-task :clean_cache do
-    rm_r FileList["tmp/cache/*"]
+task clean_cache: :environment do
+  rm_r FileList['tmp/cache/*']
 end
