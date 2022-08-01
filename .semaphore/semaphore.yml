@@ -33,3 +33,9 @@ blocks:
       - bundle exec rails db:setup
       - bundle exec rspec
       - bundle exec rubocop --parallel
+
+promotions:
+  - name: Deploy to Heroku
+    pipeline_file: heroku.yml
+    auto_promote:
+      when: "result = 'passed' and branch = 'master'"
