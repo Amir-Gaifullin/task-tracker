@@ -10,57 +10,64 @@ RSpec.describe 'ProjectPolicy', type: :policy do
 
     let(:project) { Project }
 
-    context 'when user is not authenticated' do
+    context 'when user is not present' do
       let(:user) { nil }
 
-      it { is_expected.to be(true) }
+      it { is_expected.to be_truthy }
     end
 
-    context 'when user is authenticated' do
-      let(:user) { User.new }
+    context 'when user is present' do
+      let(:user) { create :user }
 
-      it { is_expected.to be(true) }
+      it { is_expected.to be_truthy }
     end
   end
 
   describe '#show?' do
     subject { policy.show? }
 
-    context 'when user is not authenticated' do
+    context 'when user is not present' do
       let(:user) { nil }
 
-      it { is_expected.to be(false) }
+      it { is_expected.to be_falsey }
     end
 
-    context 'when user is authenticated' do
-      let(:user) { User.new }
+    context 'when user is present' do
+      let(:user) { create :user }
 
-      it { is_expected.to be(true) }
+      it { is_expected.to be_truthy }
     end
   end
 
-  describe '#new?'
-  describe '#create?'
+  describe '#create?' do
+    subject { policy.create? }
 
-  describe '#edit?' do
-    pending 'implement me'
+    context 'when user is not present' do
+      let(:user) { nil }
+
+      it { is_expected.to be_falsey }
+    end
+
+    context 'when user is present' do
+      let(:user) { create :user }
+
+      it { is_expected.to be_truthy }
+    end
   end
 
   describe '#update?' do
     subject { policy.update? }
 
-    let(:user) { User.new(id: 42) }
+    let(:user) { create :user }
 
     context 'when user is not creator of the project' do
-      it { is_expected.to be(false) }
+      it { is_expected.to be_falsey }
     end
 
     context 'when user is creator of the project' do
       let(:project) { Project.new(user: user) }
 
-      it { is_expected.to be(true) }
+      it { is_expected.to be_truthy }
     end
   end
-
-  describe '#destroy?'
 end

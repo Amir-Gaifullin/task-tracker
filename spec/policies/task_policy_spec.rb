@@ -8,36 +8,36 @@ RSpec.describe 'TaskPolicy', type: :policy do
 
     let(:task) { Task }
 
-    context 'when user is authenticated' do
-      let(:user) { User.new }
+    context 'when user is present' do
+      let(:user) { create :user }
 
-      it { is_expected.to be(true) }
+      it { is_expected.to be_truthy }
     end
 
-    context 'when user is not authenticated' do
+    context 'when user is not present' do
       let(:user) { nil }
 
-      it { is_expected.to be(false) }
+      it { is_expected.to be_falsey }
     end
   end
 
   describe '#create?' do
     subject { policy.create? }
 
-    let(:creator) { User.new(id: 43) }
-    let(:project) { Project.new(id: 42, user: creator) }
-    let(:task) { Task.new(project: project) }
+    let(:project) { create :project, user: creator }
+    let(:task) { create :task, project: project }
+    let(:creator) { create :user }
 
     context 'when user is creator of the project' do
       let(:user) { creator }
 
-      it { is_expected.to be(true) }
+      it { is_expected.to be_truthy }
     end
 
     context 'when user is not creator of the project' do
-      # let(:user) { User.new(id: 44) }
-      pending 'implement me'
-      # it { is_expected.to eq(false) }
+      let(:user) { create :user }
+
+      it { is_expected.to be_falsey }
     end
   end
 end

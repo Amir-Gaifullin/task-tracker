@@ -1,30 +1,38 @@
+---
 version: v1.0
-name: Task Tracker
+name: Ruby on Rails CI
 agent:
   machine:
     type: e1-standard-2
-    os_image: ubuntu1804
-
+    os_image: ubuntu2004
+execution_time_limit:
+  minutes: 10
+auto_cancel:
+  running:
+    when: true
+fail_fast:
+  stop:
+    when: true
 global_job_config:
-  env_vars:
-    - name: RAILS_ENV
-      value: test
-    - name: RACK_ENV
-      value: test
   prologue:
     commands:
       - checkout
       - cache restore
+      - sem-service start postgres
+      - sem-service start redis
+      - sem-version ruby 3.0.2
       - bundle install
-
+      - yarn install --pure-lockfile
+      - cache store
 blocks:
-  - name: Setup/Quality
-    dependencies: []
-    task:
-      jobs:
-        - name: Check code quality
-          commands:
-            - bin/rubocop
+- name: Tests and quality
+  task:
+    jobs:
+    - name: Run
+      commands:
+      - bundle exec rails db:setup
+      - bundle exec rspec
+      - bundle exec rubocop --parallel
 
 promotions:
   - name: Deploy to Heroku
