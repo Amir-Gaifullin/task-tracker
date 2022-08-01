@@ -8,13 +8,13 @@ RSpec.describe 'TaskPolicy', type: :policy do
 
     let(:task) { Task }
 
-    context 'when user is authenticated' do
+    context 'when user is present' do
       let(:user) { create :user }
 
       it { is_expected.to be_truthy }
     end
 
-    context 'when user is not authenticated' do
+    context 'when user is not present' do
       let(:user) { nil }
 
       it { is_expected.to be_falsey }
