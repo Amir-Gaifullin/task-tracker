@@ -11,6 +11,16 @@ class TasksController < ApplicationController
   def show
     @comments = Comment.where(task_id: @task.id)
     @comment = Comment.new
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: [@task.id, @task.title].join('-'),
+               template: 'tasks/show',
+               formats: [:html],
+               disposition: :inline,
+               layout: 'pdf'
+      end
+    end
   end
 
   def new
