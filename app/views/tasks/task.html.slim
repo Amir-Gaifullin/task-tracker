@@ -1,0 +1,29 @@
+p id="notice"
+  = notice
+p
+  PDF generation date:
+  = Time.zone.now
+p
+  strong Task ID:
+  = @task.id
+p
+  strong Title:
+  = @task.title
+
+p
+  strong Description:
+  = @task.description
+
+p
+  strong Status:
+  = @task.status
+
+p
+  strong Project:
+  = link_to @task.project.name, @task.project
+
+p
+  strong Deadline:
+  = @task.deadline_at.to_s(:long)
+br
+= render partial: "comments/list", comments: @comments

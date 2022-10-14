@@ -15,7 +15,7 @@ class TasksController < ApplicationController
       format.html
       format.pdf do
         render pdf: [@task.id, @task.title].join('-'),
-               template: 'tasks/show',
+               template: 'tasks/task',
                formats: [:html],
                disposition: :inline,
                layout: 'pdf'
