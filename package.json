@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "16.11.1"
+  },
   "name": "myapp",
   "private": true,
   "dependencies": {
