@@ -9,7 +9,7 @@ table
       td Requested at
       td Deadline
       td Status
-      th colspan="3"
+      th colspan="4"
   tbody
    - @tasks.each do |task|
     tr
@@ -22,6 +22,7 @@ table
       td = link_to 'Show', task
       td = link_to 'Edit', edit_task_path(task)
       td = link_to('Destroy', task, method: :delete, data: { confirm: 'Are you sure?' })
+      td = link_to 'This task in PDF', task_path(task, format: :pdf)
 
 br
 = pagy_bootstrap_nav(@pagy).html_safe
