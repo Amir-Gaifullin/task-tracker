@@ -1,12 +1,15 @@
 p id="notice"
   = notice
 
-p
-  strong Name:
+strong Name:
+
+p id="project_name"
   = @project.name
 
-p
-  strong Description:
+
+strong Description:
+
+p id="project_description"
   = @project.description
 
 = link_to 'Edit', edit_project_path(@project)

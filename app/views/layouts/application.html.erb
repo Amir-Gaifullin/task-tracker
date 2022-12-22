@@ -28,7 +28,7 @@
           <li class="nav-item">
             <%= link_to "Tasks", tasks_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="user_full_name">
             <%= link_to(
                   current_user.full_name.presence || current_user.email,
                   users_path,

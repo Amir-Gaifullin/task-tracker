@@ -6,8 +6,8 @@ class CreateProject
     delegate :users, to: :project, prefix: true
 
     def call
-      send_email_notifications
-      create_activity
+      # send_email_notifications
+      # create_activity
     end
 
     private
