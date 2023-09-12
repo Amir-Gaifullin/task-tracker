@@ -37,7 +37,6 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # instead of true.
   config.use_transactional_fixtures = true
 
   # config.use_active_record = false
